@@ -9,7 +9,7 @@ from datetime import datetime
 
 import requests
 
-from .utils import Colors, urls_dict
+from .utils import Colors, urls_dict, headers
 
 PDFS = sys.argv[1]
 TXT_PATH_DOWNLOAD = sys.argv[2]
@@ -17,8 +17,8 @@ TXT_PATH_DOWNLOAD = sys.argv[2]
 
 class Tika(object):
     """
-    Usage: ./pdf_file_to_tika.py pdfs_dir tika_output_dir tika_url
-    For example: ./pdf_file_to_grobid.py pdfs_data tika_output_data rs
+    Usage: ./pdf_to_tika.py pdfs_dir tika_output_dir tika_url
+    For example: ./pdf_to_tika.py pdfs_data tika_output_data tika
     """
 
     def __init__(self, *args, **kwargs):
@@ -96,10 +96,6 @@ class Tika(object):
 
                 pdf_file = open(file, 'rb')
 
-                headers = {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
-                }
-
                 try:
 
                     tika = session.put(
@@ -148,7 +144,7 @@ class Tika(object):
                                 file_ext='.txt'), 'w') as tika_output:
                             tika_output.write(txt_file)
 
-                            print('Saved grobid TXT output to file!')
+                            print('Saved TIKA TXT output to file!')
 
                             print(Colors.BOLD + '________________________________________________' + Colors.ENDC)
 

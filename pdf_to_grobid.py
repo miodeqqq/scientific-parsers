@@ -9,7 +9,7 @@ from datetime import datetime
 
 import requests
 
-from .utils import Colors, urls_dict
+from .utils import Colors, urls_dict, headers
 
 PDFS = sys.argv[1]
 XMLS_PATH_DOWNLOAD = sys.argv[2]
@@ -18,7 +18,7 @@ XMLS_PATH_DOWNLOAD = sys.argv[2]
 class Grobid(object):
     """
     Usage: ./pdf_to_grobid.py pdfs_dir grobid_output_dir grobid_url
-    For example: ./pdf_to_grobid.py pdfs_data grobid_output_data local
+    For example: ./pdf_to_grobid.py pdfs_data grobid_output_data grobid
     """
 
     def __init__(self, *args, **kwargs):
@@ -100,10 +100,6 @@ class Grobid(object):
 
                 pdf_file = {
                     'input': pdf
-                }
-
-                headers = {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
                 }
 
                 try:

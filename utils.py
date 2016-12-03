@@ -21,3 +21,7 @@ urls_dict = {
     'grobid': 'http://localhost:1234/processFulltextDocument',
     'tika': 'http://localhost:9876/tika',
 }
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
+}
